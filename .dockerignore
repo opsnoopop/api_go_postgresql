@@ -1,0 +1,12 @@
+.DS_Store
+.dockerignore
+.git
+.gitignore
+Dockerfile
+README.md
+docker-compose.yml
+k6/
+pkg/
+mysql/
+mysql_initdb/
+test*.sh

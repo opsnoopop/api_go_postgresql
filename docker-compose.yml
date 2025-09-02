@@ -1,0 +1,59 @@
+services:
+  go:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: golang:1.26_custom
+    container_name: container_go
+    restart: always
+    ports:
+      - "80:3000"
+    depends_on:
+      - database
+    env_file:
+      - .env
+    networks:
+      network_go:
+        ipv4_address: 172.16.0.11
+
+  database:
+    image: postgres:17.5
+    container_name: container_postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+      - ./postgresql_initdb:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testuser -d testdb"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    networks:
+      network_go:
+        ipv4_address: 172.16.0.12
+
+  adminer:
+    image: adminer:5-standalone
+    container_name: container_adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    networks:
+      network_go:
+        ipv4_address: 172.16.0.13
+
+networks:
+  network_go:
+    name: global_go
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
