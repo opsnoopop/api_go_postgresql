@@ -117,14 +117,14 @@ docker run \
 --name container_ubuntu_tool \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 opsnoopop/ubuntu-tool:1.0 \
 sysbench \
 --threads=2 \
 --time=10 \
 --db-driver="pgsql" \
 --pgsql-host="container_postgresql" \
---pgsql-port=3306 \
+--pgsql-port=5432 \
 --pgsql-user="testuser" \
 --pgsql-password="testpass" \
 --pgsql-db="testdb" \
@@ -139,14 +139,14 @@ docker run \
 --name container_ubuntu_tool \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 opsnoopop/ubuntu-tool:1.0 \
 sysbench \
 --threads=2 \
 --time=10 \
 --db-driver="pgsql" \
 --pgsql-host="container_postgresql" \
---pgsql-port=3306 \
+--pgsql-port=5432 \
 --pgsql-user="testuser" \
 --pgsql-password="testpass" \
 --pgsql-db="testdb" \
@@ -161,14 +161,14 @@ docker run \
 --name container_ubuntu_tool \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 opsnoopop/ubuntu-tool:1.0 \
 sysbench \
 --threads=2 \
 --time=10 \
 --db-driver="pgsql" \
 --pgsql-host="container_postgresql" \
---pgsql-port=3306 \
+--pgsql-port=5432 \
 --pgsql-user="testuser" \
 --pgsql-password="testpass" \
 --pgsql-db="testdb" \
@@ -186,7 +186,7 @@ docker run \
 --name container_k6 \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 -v ./k6/:/k6/ \
 grafana/k6:1.1.0 \
 run /k6/k6_1_ramping_health_check.js
@@ -198,7 +198,7 @@ docker run \
 --name container_k6 \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 -v ./k6/:/k6/ \
 grafana/k6:1.1.0 \
 run /k6/k6_2_ramping_create_user.js
@@ -210,7 +210,7 @@ docker run \
 --name container_k6 \
 --rm \
 -it \
---network global_go \
+--network global_optest \
 -v ./k6/:/k6/ \
 grafana/k6:1.1.0 \
 run /k6/k6_3_ramping_get_user_by_id.js

@@ -1,5 +1,5 @@
 services:
-  go:
+  api:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -9,11 +9,12 @@ services:
     ports:
       - "80:3000"
     depends_on:
-      - database
+      database:
+        condition: service_healthy
     env_file:
       - .env
     networks:
-      network_go:
+      network_optest:
         ipv4_address: 172.16.0.11
 
   database:
@@ -35,7 +36,7 @@ services:
       timeout: 3s
       retries: 30
     networks:
-      network_go:
+      network_optest:
         ipv4_address: 172.16.0.12
 
   adminer:
@@ -47,12 +48,12 @@ services:
     depends_on:
       - database
     networks:
-      network_go:
+      network_optest:
         ipv4_address: 172.16.0.13
 
 networks:
-  network_go:
-    name: global_go
+  network_optest:
+    name: global_optest
     ipam:
       driver: default
       config:

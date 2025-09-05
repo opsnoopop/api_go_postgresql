@@ -36,7 +36,7 @@ func (a *App) handleRoot(w http.ResponseWriter, r *http.Request) {
 		jsonWrite(w, http.StatusNotFound, map[string]string{"error": "Not Found"})
 		return
 	}
-	jsonWrite(w, http.StatusOK, map[string]string{"message": "Hello World from Go"})
+	jsonWrite(w, http.StatusOK, map[string]string{"message": "Hello World from Go (PostgreSQL)"})
 }
 
 func (a *App) handleUsers(w http.ResponseWriter, r *http.Request) {
