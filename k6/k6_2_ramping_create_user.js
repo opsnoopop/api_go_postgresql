@@ -21,7 +21,6 @@ export const options = {
         { duration: '5s', target: 10000 },
         { duration: '5s', target: 0 },    // ramp-down
       ],
-      gracefulStop: '5s',
     },
   },
   thresholds: {

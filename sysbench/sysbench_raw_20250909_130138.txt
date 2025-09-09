@@ -1,0 +1,38 @@
+PostgreSQL
+sysbench 1.0.20 (using system LuaJIT 2.1.0-beta3)
+
+Running the test with following options:
+Number of threads: 2
+Initializing random number generator from current time
+
+
+Initializing worker threads...
+
+Threads started!
+
+SQL statistics:
+    queries performed:
+        read:                            49490
+        write:                           14140
+        other:                           7070
+        total:                           70700
+    transactions:                        3535   (353.31 per sec.)
+    queries:                             70700  (7066.11 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          10.0039s
+    total number of events:              3535
+
+Latency (ms):
+         min:                                    2.35
+         avg:                                    5.66
+         max:                                  108.68
+         95th percentile:                        8.13
+         sum:                                19993.03
+
+Threads fairness:
+    events (avg/stddev):           1767.5000/1.50
+    execution time (avg/stddev):   9.9965/0.00
+
